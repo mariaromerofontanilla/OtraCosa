@@ -1,9 +1,12 @@
 package fecha;
-
+/**
+ * Este es el examen en el cual vamos a modificar cosas importantes
+ * se llama fecha porque es un ejecicio donde trabajaremos con las fechas.
+ */
 public class Fecha {
-	private int d; //día
+	private int d; //dï¿½a
 	private int m; //mes
-	private int a; //año
+	private int a; //aï¿½o
 
 	
 	public Fecha() {
@@ -18,7 +21,11 @@ public class Fecha {
 	}
 
 	
-	
+	/**
+	 * Este es el metodo de chaCorrecta en donde se escargara de verificar si la fecha
+	 * introducida es la correcta
+	 * @return devuelve diaCoorecto mesCorrecto y aÃ±oCorrecto
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaCorrecto, mesCorrecto, anioCorrecto;
 		anioCorrecto = a > 0;
@@ -43,13 +50,19 @@ public class Fecha {
 		return diaCorrecto && mesCorrecto && anioCorrecto;
 	}
 
-	// Método esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	
+	/**
+	 *  Mï¿½todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	 * @return devuelve esBinario
+	 */
 	private boolean esBisiesto() {
 		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
 		return esBisiesto;
 	}
 
-	// Método diaSiguiente
+	/**
+	 * Mï¿½todo diaSiguiente donde nos dara el dia siguien sumando uno al que tenemos
+	 */
 	public void diaSiguiente() {
 		d++;
 		if (!fechaCorrecta()) {
@@ -62,7 +75,9 @@ public class Fecha {
 		}
 	}
 
-	// Método toString
+	/**
+	 * Mï¿½todo toString donde nos mostrara la informacion segun vaya cambiando
+	 */
 	public String toString() {
 		if (d < 10 && m < 10) {
 			return "0" + d + "-0" + m + "-" + a;
