@@ -1,10 +1,19 @@
 package fecha;
-
+/**
+ * Este es el examen en el cual vamos a modificar cosas importantes
+ * se llama fecha porque es un ejecicio donde trabajaremos con las fechas.
+ */
 public class Fecha {
+<<<<<<< HEAD
 	public static final int DIEZ = 10;
 	private int diaUsar; //d�a
 	private int mesUsar; //mes
 	private int anioUsar; //a�o
+=======
+	private int d; //d�a
+	private int m; //mes
+	private int a; //a�o
+>>>>>>> Javadoc
 
 	
 	public Fecha() {
@@ -19,7 +28,11 @@ public class Fecha {
 	}
 
 	
-	
+	/**
+	 * Este es el metodo de chaCorrecta en donde se escargara de verificar si la fecha
+	 * introducida es la correcta
+	 * @return devuelve diaCoorecto mesCorrecto y añoCorrecto
+	 */
 	public boolean fechaCorrecta() {
 		boolean diaC;
 		boolean mesC;
@@ -47,16 +60,32 @@ public class Fecha {
 		return diaC && mesC && anioC;
 	}
 
+<<<<<<< HEAD
 	// M�todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+=======
+	
+	/**
+	 *  M�todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	 * @return devuelve esBinario
+	 */
+>>>>>>> Javadoc
 	private boolean esBisiesto() {
 		boolean esBisiesto;
 		esBisiesto = (anioUsar % 4 == 0 && anioUsar % 100 != 0 || anioUsar % 400 == 0);
 		return esBisiesto;
 	}
 
+<<<<<<< HEAD
 	// M�todo diaSiguiente
 	public void nexDay() {
 		diaUsar++;
+=======
+	/**
+	 * M�todo diaSiguiente donde nos dara el dia siguien sumando uno al que tenemos
+	 */
+	public void diaSiguiente() {
+		d++;
+>>>>>>> Javadoc
 		if (!fechaCorrecta()) {
 			diaUsar = 1;
 			mesUsar++;
@@ -67,7 +96,13 @@ public class Fecha {
 		}
 	}
 
+<<<<<<< HEAD
 	// M�todo toString
+=======
+	/**
+	 * M�todo toString donde nos mostrara la informacion segun vaya cambiando
+	 */
+>>>>>>> Javadoc
 	public String toString() {
 		String resultado= "";
 		if (diaUsar < DIEZ && mesUsar < 10) {
