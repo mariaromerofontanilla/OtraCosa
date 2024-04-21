@@ -1,9 +1,10 @@
 package fecha;
 
 public class Fecha {
-	private int d; //día
-	private int m; //mes
-	private int a; //año
+	public static final int DIEZ = 10;
+	private int diaUsar; //dï¿½a
+	private int mesUsar; //mes
+	private int anioUsar; //aï¿½o
 
 	
 	public Fecha() {
@@ -12,67 +13,74 @@ public class Fecha {
 
 	
 	public Fecha(int dia, int mes, int anio) {
-		this.d = dia;
-		this.m = mes;
-		this.a = anio;
+		this.diaUsar = dia;
+		this.mesUsar = mes;
+		this.anioUsar = anio;
 	}
 
 	
 	
 	public boolean fechaCorrecta() {
-		boolean diaCorrecto, mesCorrecto, anioCorrecto;
-		anioCorrecto = a > 0;
-		mesCorrecto = m >= 1 && m <= 12;
-		switch (m) {
+		boolean diaC;
+		boolean mesC;
+		boolean anioC;
+		anioC = anioUsar > 0;
+		mesC = mesUsar >= 1 && mesUsar <= 12;
+		boolean diaMayor1 = diaUsar >= 1;
+		switch (mesUsar) {
 		case 2:
 			if (esBisiesto()) {
-				diaCorrecto = d >= 1 && d <= 29;
+				diaC = diaMayor1 && diaUsar <= 29;
 			} else {
-				diaCorrecto = d >= 1 && d <= 28;
+				diaC = diaMayor1 && diaUsar <= 28;
 			}
 			break;
 		case 4:
 		case 6:
 		case 9:
 		case 11:
-			diaCorrecto = d >= 1 && d <= 30;
+			diaC = diaMayor1 && diaUsar <= 30;
 			break;
 		default:
-			diaCorrecto = d >= 1 && d <= 31;
+			diaC = diaMayor1 && diaUsar <= 31;
 		}
-		return diaCorrecto && mesCorrecto && anioCorrecto;
+		return diaC && mesC && anioC;
 	}
 
-	// Método esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
+	// Mï¿½todo esBisiesto. Solo lo usa fechaCorrecta, por eso es privado
 	private boolean esBisiesto() {
-		boolean esBisiesto = (a % 4 == 0 && a % 100 != 0 || a % 400 == 0);
+		boolean esBisiesto;
+		esBisiesto = (anioUsar % 4 == 0 && anioUsar % 100 != 0 || anioUsar % 400 == 0);
 		return esBisiesto;
 	}
 
-	// Método diaSiguiente
-	public void diaSiguiente() {
-		d++;
+	// Mï¿½todo diaSiguiente
+	public void nexDay() {
+		diaUsar++;
 		if (!fechaCorrecta()) {
-			d = 1;
-			m++;
+			diaUsar = 1;
+			mesUsar++;
 			if (!fechaCorrecta()) {
-				m = 1;
-				a++;
+				mesUsar = 1;
+				anioUsar++;
 			}
 		}
 	}
 
-	// Método toString
+	// Mï¿½todo toString
 	public String toString() {
-		if (d < 10 && m < 10) {
-			return "0" + d + "-0" + m + "-" + a;
-		} else if (d < 10 && m >= 10) {
-			return "0" + d + "-" + m + "-" + a;
-		} else if (d >= 10 && m < 10) {
-			return d + "-0" + m + "-" + a;
+		String resultado= "";
+		if (diaUsar < DIEZ && mesUsar < 10) {
+			resultado = "0" + diaUsar + "-0" + mesUsar + "-" + anioUsar;
+		} else if (diaUsar < 10 && mesUsar >= 10) {
+			resultado = "0" + diaUsar + "-" + mesUsar + "-" + anioUsar;
+		} else if (diaUsar >= 10 && mesUsar < 10) {
+			resultado = diaUsar + "-0" + mesUsar + "-" + anioUsar;
 		} else {
-			return d + "-" + m + "-" + a;
+			resultado = diaUsar + "-" + mesUsar + "-" + anioUsar;
 		}
+		
+		return resultado;
 	}
 
 }
